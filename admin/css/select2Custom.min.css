@@ -1,0 +1,29 @@
+.select2ResultPosts{
+	position:relative;
+}
+
+.select2ResultPostLeft{
+	display:inline-block;
+	margin-right:10px;
+}
+
+.select2ResultPostRight{
+	display:inline-block;
+	vertical-align:middle;
+	height:100%;
+	position:absolute;
+}
+.select2ResultPostVCenterDiv{
+  display:table;
+  height:100%;
+}
+
+.select2ResultPostVCenterElem{
+  display:table-cell;
+  vertical-align:middle;
+}
+
+img.select2Selection{
+	vertical-align: middle;
+	margin-right:5px;
+}

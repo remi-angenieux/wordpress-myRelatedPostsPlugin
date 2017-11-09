@@ -1,0 +1,57 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Fast Simple Reliable Related Post\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2017-11-08 23:47+0000\n"
+"PO-Revision-Date: 2017-11-08 23:49+0000\n"
+"Last-Translator: Rémi ANGENIEUX <remi@angenieux.info>\n"
+"Language-Team: English (United States)\n"
+"Language: en-US\n"
+"Plural-Forms: nplurals=2; plural=n != 1\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Loco - https://localise.biz/"
+
+#: admin/myRelatedPostsPlugin-admin.php:22
+msgctxt "admin"
+msgid "MyRelatedPostPlugin: Bad input!"
+msgstr "MyRelatedPostPlugin: Bad input!"
+
+#: admin/myRelatedPostsPlugin-admin.php:23
+msgctxt "admin"
+msgid "MyRelatedPostPlugin: Unknown error!"
+msgstr "MyRelatedPostPlugin: Unknown error!"
+
+#: admin/myRelatedPostsPlugin-admin.php:168
+msgctxt "admin"
+msgid ""
+"Choose each posts you want to see on the related posts section. You can "
+"choose only 3 posts."
+msgstr ""
+"Choose each posts you want to see on the related posts section. You can "
+"choose only 3 posts."
+
+#. Name of the plugin
+msgid "Fast Simple Reliable Related Post"
+msgstr "Fast Simple Reliable Related Post"
+
+#. Description of the plugin
+msgid ""
+"Add related posts section based on post added manuallay, or categories or "
+"tags or random."
+msgstr ""
+"Add related posts section based on post added manuallay, or categories or "
+"tags or random."
+
+#. URI of the plugin
+msgid "https://blog.angenieux.info"
+msgstr "https://blog.angenieux.info"
+
+#. Author of the plugin
+msgid "Remi Angenieux"
+msgstr "Remi Angenieux"
+
+#. Author URI of the plugin
+msgid "https://remi.angenieux.info"
+msgstr "https://remi.angenieux.info"
