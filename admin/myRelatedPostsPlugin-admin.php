@@ -19,8 +19,8 @@ class MyRelatedPostsPlugin_Admin {
 		
 		// Error messages
 		self::$_errors = array(
-			self::ER_BAD_INPUT => _x('MyRelatedPostPlugin: Bad input!', 'admin', 'myRelatedPostsPlugin'),
-		    self::ER_UNKNOWN => _x('MyRelatedPostPlugin: Unknown error!', 'admin', 'myRelatedPostsPlugin')
+			self::ER_BAD_INPUT => _x('MyRelatedPostsPlugin: Bad input!', 'admin', 'myRelatedPostsPlugin'),
+		    self::ER_UNKNOWN => _x('MyRelatedPostsPlugin: Unknown error!', 'admin', 'myRelatedPostsPlugin')
 		);
 	}
 
@@ -193,7 +193,7 @@ class MyRelatedPostsPlugin_Admin {
 	 * Adds the metaBox
 	 */
 	public function add_meta_boxes() {
-		add_meta_box ( 'myRelatedPostPlugin-metaBox', _x('Related Posts', 'admin', 'myRelatedPostPlugin' ), array ($this, 'showMetaBox'), 'post', 'advanced', 'low', null);
+		add_meta_box ( 'myRelatedPostsPlugin-metaBox', _x('Related Posts', 'admin', 'myRelatedPostsPlugin' ), array ($this, 'showMetaBox'), 'post', 'advanced', 'low', null);
 	}
 	
 	/**
@@ -244,7 +244,7 @@ class MyRelatedPostsPlugin_Admin {
 		}
 		$('#<?php echo $this->_config->getMetaBoxInputIncludePosts(); ?>').select2({
 			width: '100%',
-			placeholder: '<?php _ex('Search post...', 'admin', 'myRelatedPostPlugin'); ?>',
+			placeholder: '<?php _ex('Search post...', 'admin', 'myRelatedPostsPlugin'); ?>',
 			minimumInputLength : 3,
 			templateResult: formatPost,
 			templateSelection: formatPostSelection,
