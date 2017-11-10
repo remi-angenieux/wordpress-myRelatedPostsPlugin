@@ -35,8 +35,7 @@ class MyRelatedPostsPlugin_Public {
 	}
 	
 	/**
-	 * Get the primary category of the current post (if $catId=false).
-	 * Or the
+	 * Get the primary category of the current post (in the loop).
 	 * 
 	 * @param integer $catId
 	 * @return mixed[]|boolean On sucess return an array:<br />
@@ -46,11 +45,8 @@ class MyRelatedPostsPlugin_Public {
 	 * 
 	 * If the current post is not in any category, return FALSE.
 	 */
-	protected function _primaryCategory($catId=FALSE) {
-        if ($catId===FALSE)
-            $category = get_the_category();
-        else
-            $category[0] = get_category($catId);
+	protected function _primaryCategory() {
+        $category = get_the_category();
         // If post has a category assigned.
         if ($category){
             $category_display = '';
