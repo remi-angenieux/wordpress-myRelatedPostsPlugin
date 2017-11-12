@@ -34,7 +34,7 @@ Then you can create a loop:
     while ($related_query->have_posts()) : $related_query->the_post();
     
 ### Full example
-    if (class_exists(MyRelatedPostsPlugin)){
+    if (class_exists('MyRelatedPostsPlugin')){
         $related_query = MyRelatedPostsPlugin::getInstance()->getRelatedPosts();
         if ($related_query->have_posts()) {	?>
 		    <div class="related-posts">
@@ -110,7 +110,7 @@ Puis créer la boucle :
     while ($related_query->have_posts()) : $related_query->the_post();
     
 ### Exemple complet
-    if (class_exists(MyRelatedPostsPlugin)){
+    if (class_exists('MyRelatedPostsPlugin')){
         $related_query = MyRelatedPostsPlugin::getInstance()->getRelatedPosts();
         if ($related_query->have_posts()) {	?>
 		    <div class="related-posts">
