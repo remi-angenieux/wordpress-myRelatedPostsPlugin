@@ -24,7 +24,7 @@ class MyRelatedPostsPlugin_i18n {
 		load_plugin_textdomain(
 			$this->_config->getPluginName(),
 			false,
-			dirname( dirname( plugin_basename( __FILE__ ) ) ) . '/languages/'
+			dirname( dirname( plugin_basename( __FILE__ ) ) ) . '/languages'
 		);
 	}
 }

@@ -9,21 +9,42 @@
 class MyRelatedPostsPlugin_Admin {
 	
 	protected $_config;
-	protected static $_errors;
+	protected $_errors;
 	const ER_BAD_INPUT = 1;
 	const ER_UNKNOWN = 10;
 	
 	public function __construct() {
 	    // Load configuration
 	    $this->_config = MyRelatedPostsPlugin_Config::getInstance();
-		
-		// Error messages
-		self::$_errors = array(
-			self::ER_BAD_INPUT => _x('MyRelatedPostsPlugin: Bad input!', 'admin', 'myRelatedPostsPlugin'),
-		    self::ER_UNKNOWN => _x('MyRelatedPostsPlugin: Unknown error!', 'admin', 'myRelatedPostsPlugin')
-		);
 	}
 
+	/**
+	 * Retrives error message.
+	 * 
+	 * @param integer $code Error code.
+	 * @return NULL
+	 */
+	protected function _getErrorMessage($code){
+	    // Create here this array, because we can't use l18n in a construct (l18n not yet init).
+	    if (empty($this->_errors)){
+	        $this->_errors = array(
+	            self::ER_BAD_INPUT => _x('MyRelatedPostsPlugin: Bad input!', 'admin', (string)'myRelatedPostsPlugin'),
+	            self::ER_UNKNOWN => _x('MyRelatedPostsPlugin: Unknown error!', 'admin', 'myRelatedPostsPlugin')
+	        );
+	    }
+	    
+	    switch($code) {
+	        case self::ER_BAD_INPUT:
+	            $result = $this->_errors[self::ER_BAD_INPUT];
+	            break;
+	            
+	        default:
+	            $result = $this->_errors[self::ER_UNKNOWN];
+	            break;
+	    }
+	    
+	    return $result;
+	}
 	
 	/**
 	 * Prints error if something went wrong.
@@ -33,15 +54,16 @@ class MyRelatedPostsPlugin_Admin {
 		    <div class="notice notice-error">
 		        <p>
 		            <?php
-		            switch($_GET[$this->_config->getMetaBoxErrorsParamName()]) {
-		                case MYRPP_ER_BAD_INPUT:
-		                    echo esc_html(self::$_errors[self::ER_BAD_INPUT]);
+		            /*switch($_GET[$this->_config->getMetaBoxErrorsParamName()]) {
+		                case self::ER_BAD_INPUT:
+		                    echo esc_html($this->_errors[self::ER_BAD_INPUT]);
 		                break;
 
 		                default:
-		                     echo esc_html(self::$_errors[self::ER_UNKNOWN]);
+		                    echo esc_html($this->_errors[self::ER_UNKNOWN]);
 		                break;
-		            }
+		            }*/
+		            echo esc_html($this->_getErrorMessage($_GET[$this->_config->getMetaBoxErrorsParamName()]));
 		            ?>
 		        </p>
 		    </div><?php
@@ -108,11 +130,12 @@ class MyRelatedPostsPlugin_Admin {
 	
 		if('post' != $post->post_type)
 			return $post_id;
-		
-		// Force to be an array, event if just one value is choosen
-			$inputIncludePosts = (is_array($_POST[$this->_config->getMetaBoxInputIncludePosts()]) ) ? $_POST[$this->_config->getMetaBoxInputIncludePosts()] : array($_POST[$this->_config->getMetaBoxInputIncludePosts()]);
-			
-		if (!empty($inputIncludePosts)){
+				
+		$error = null;
+		if (!empty($_POST[$this->_config->getMetaBoxInputIncludePosts()])){
+		    // Force to be an array, even if just one value is choosen
+		    $inputIncludePosts = (is_array($_POST[$this->_config->getMetaBoxInputIncludePosts()]) ) ? $_POST[$this->_config->getMetaBoxInputIncludePosts()] : array($_POST[$this->_config->getMetaBoxInputIncludePosts()]);
+		    
 		    $args = array(
                 'post_type'      => 'post',
                 'post_status'    => array('publish','pending','draft','future'), // Usefull if we want to prepare a post and want to link to draft posts
@@ -123,7 +146,7 @@ class MyRelatedPostsPlugin_Admin {
     		    
             // Verify each IDs, they need to be valid
             if( array_diff($inputIncludePosts, $postsMatches) != array()) {
-                $error = new WP_Error(self::ER_BAD_INPUT, self::$_errors[self::ER_BAD_INPUT]);
+                $error = new WP_Error(self::ER_BAD_INPUT, $this->_getErrorMessage(self::ER_BAD_INPUT));
             }
 		}
 		

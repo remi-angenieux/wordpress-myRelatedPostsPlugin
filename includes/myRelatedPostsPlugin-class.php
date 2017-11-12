@@ -56,7 +56,7 @@ class MyRelatedPostsPlugin {
 	protected function _setLocale() {
 	    require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/myRelatedPostsPlugin-i18n.php';
 		$this->_pluginI18n = new MyRelatedPostsPlugin_i18n();
-		$this->_pluginLoader->add_action( 'plugins_loaded', $this->_pluginI18n, 'load_plugin_textdomain' );
+		$this->_pluginLoader->add_action( 'init', $this->_pluginI18n, 'load_plugin_textdomain' );
 	}
 	/**
 	 * Registers all hooks related to the admin area 
