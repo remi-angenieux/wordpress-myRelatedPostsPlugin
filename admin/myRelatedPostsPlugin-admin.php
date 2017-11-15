@@ -28,7 +28,7 @@ class MyRelatedPostsPlugin_Admin {
 	    // Create here this array, because we can't use l18n in a construct (l18n not yet init).
 	    if (empty($this->_errors)){
 	        $this->_errors = array(
-	            self::ER_BAD_INPUT => _x('MyRelatedPostsPlugin: Bad input!', 'admin', (string)'myRelatedPostsPlugin'),
+	            self::ER_BAD_INPUT => _x('MyRelatedPostsPlugin: Bad input!', 'admin', 'myRelatedPostsPlugin'),
 	            self::ER_UNKNOWN => _x('MyRelatedPostsPlugin: Unknown error!', 'admin', 'myRelatedPostsPlugin')
 	        );
 	    }

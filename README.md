@@ -38,35 +38,29 @@ Then you can create a loop:
         $related_query = MyRelatedPostsPlugin::getInstance()->getRelatedPosts();
         if ($related_query->have_posts()) {	?>
 		    <div class="related-posts">
-			<?php
-			$related_title = esc_attr( of_get_option('blog_related') );
-			?>
-				<h2 class="related-posts_h"><?php if ( '' != $related_title ) { echo $related_title; } else { _e('Related Posts','bueno'); }?></h2>
+				<h2 class="related-posts_h"><?php _e('Related Posts','bueno'); ?></h2>
 				<ul class="related-posts_list clearfix">
 				<?php
 				while ($related_query->have_posts()) : $related_query->the_post();
 				?>
 					<li class="related-posts_item">
-						<?php
-						if(has_post_thumbnail()) {
-							$thumb = get_post_thumbnail_id();
-							$img_url = wp_get_attachment_image_src( $thumb,'related-thumb'); //get img URL
-						?>
-						<figure class="thumbnail featured-thumbnail">
-							<a href="<?php the_permalink(); ?>" title="<?php the_title(); ?>"><img src="<?php echo esc_url( $img_url[0] ); ?>" alt="<?php the_title(); ?>" /></a>
-						</figure>
-						<?php
-						} else {
-						?>
-						<figure class="thumbnail featured-thumbnail">
-							<a href="<?php the_permalink(); ?>" title="<?php the_title(); ?>"><img src="<?php echo get_template_directory_uri(); ?>/images/empty_thumb.gif" alt="<?php the_title(); ?>" /></a>
-						</figure>
-						<?php
-						}
-						?>
+						<?php if(has_post_thumbnail()) { ?>
+							<?php
+								$thumb = get_post_thumbnail_id();
+								$img_url = wp_get_attachment_image_src( $thumb,'featured-thumb'); //get img URL
+							?>
+							<figure class="thumbnail featured-thumbnail">
+								<a href="<?php the_permalink(); ?>" title="<?php the_title(); ?>">
+								<?php the_post_thumbnail('featured-thumb', array( 'sizes' => '30vw' )); ?>
+								</a>
+							</figure>
+						<?php } else { ?>
+							<figure class="thumbnail featured-thumbnail">
+								<a href="<?php the_permalink(); ?>" title="<?php the_title(); ?>"><img src="<?php echo get_template_directory_uri(); ?>/images/empty_thumb.gif" alt="<?php the_title(); ?>" /></a>
+							</figure>
+						<?php } ?>
 						<a href="<?php the_permalink() ?>" > <?php the_title();?> </a>
 					</li>
-				<?php
 				endwhile;
 				?>
 				</ul>
@@ -114,35 +108,29 @@ Puis créer la boucle :
         $related_query = MyRelatedPostsPlugin::getInstance()->getRelatedPosts();
         if ($related_query->have_posts()) {	?>
 		    <div class="related-posts">
-			<?php
-			$related_title = esc_attr( of_get_option('blog_related') );
-			?>
-				<h2 class="related-posts_h"><?php if ( '' != $related_title ) { echo $related_title; } else { _e('Related Posts','bueno'); }?></h2>
+				<h2 class="related-posts_h"><?php _e('Related Posts','bueno'); ?></h2>
 				<ul class="related-posts_list clearfix">
 				<?php
 				while ($related_query->have_posts()) : $related_query->the_post();
 				?>
 					<li class="related-posts_item">
-						<?php
-						if(has_post_thumbnail()) {
-							$thumb = get_post_thumbnail_id();
-							$img_url = wp_get_attachment_image_src( $thumb,'related-thumb'); //get img URL
-						?>
-						<figure class="thumbnail featured-thumbnail">
-							<a href="<?php the_permalink(); ?>" title="<?php the_title(); ?>"><img src="<?php echo esc_url( $img_url[0] ); ?>" alt="<?php the_title(); ?>" /></a>
-						</figure>
-						<?php
-						} else {
-						?>
-						<figure class="thumbnail featured-thumbnail">
-							<a href="<?php the_permalink(); ?>" title="<?php the_title(); ?>"><img src="<?php echo get_template_directory_uri(); ?>/images/empty_thumb.gif" alt="<?php the_title(); ?>" /></a>
-						</figure>
-						<?php
-						}
-						?>
+						<?php if(has_post_thumbnail()) { ?>
+							<?php
+								$thumb = get_post_thumbnail_id();
+								$img_url = wp_get_attachment_image_src( $thumb,'featured-thumb'); //get img URL
+							?>
+							<figure class="thumbnail featured-thumbnail">
+								<a href="<?php the_permalink(); ?>" title="<?php the_title(); ?>">
+								<?php the_post_thumbnail('featured-thumb', array( 'sizes' => '30vw' )); ?>
+								</a>
+							</figure>
+						<?php } else { ?>
+							<figure class="thumbnail featured-thumbnail">
+								<a href="<?php the_permalink(); ?>" title="<?php the_title(); ?>"><img src="<?php echo get_template_directory_uri(); ?>/images/empty_thumb.gif" alt="<?php the_title(); ?>" /></a>
+							</figure>
+						<?php } ?>
 						<a href="<?php the_permalink() ?>" > <?php the_title();?> </a>
 					</li>
-				<?php
 				endwhile;
 				?>
 				</ul>
